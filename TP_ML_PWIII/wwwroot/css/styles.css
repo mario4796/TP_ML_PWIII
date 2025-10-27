@@ -1,0 +1,88 @@
+﻿body {
+    font-family: 'Poppins', sans-serif;
+}
+
+/* === HERO === */
+.hero {
+    position: relative;
+    height: 35vh;
+    /*background: linear-gradient(135deg, #072f23, #084433 40%, #0b3d2e 100%);*/
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05) 40%, rgba(255, 255, 255, 0.1) 100%);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    overflow: hidden;
+}
+
+    /* === Efecto Glow animado (colores RGB originales, sin naranja) === */
+    .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: linear-gradient(90deg, #ff0055, #00ffaa, #00aaff, #ff00ff, #ff0055);
+        background-size: 300%;
+        opacity: 0.25;
+        /* intensidad del glow */
+        filter: blur(40px);
+        animation: heroGradientShift 25s linear infinite;
+        z-index: 0;
+    }
+
+/* === Animación de desplazamiento del gradiente === */
+@keyframes heroGradientShift {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 600% 50%;
+    }
+}
+
+/* === Contenido del hero encima del glow === */
+.hero * {
+    position: relative;
+    z-index: 1;
+}
+
+/* === Hover de tarjetas === */
+.card-hover {
+    transition: transform 0.25s ease, box-shadow 0.25s ease, background-color 0.25s ease;
+    background-color: var(--bs-dark-bg-subtle);
+}
+
+    .card-hover:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    }
+
+.card1:hover {
+    background-color: #331904;
+}
+
+.card2:hover {
+    background-color: #051b11;
+}
+
+.card3:hover {
+    background-color: #140330;
+}
+
+/* === PERFIL === */
+.perfil-avatar {
+    border: 3px solid var(--bs-success);
+    background-color: rgba(255, 255, 255, 0.05);
+    transition: transform 0.3s ease;
+}
+
+    .perfil-avatar:hover {
+        transform: scale(1.05);
+    }
+
+.playlist-card {
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+    .playlist-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+    }

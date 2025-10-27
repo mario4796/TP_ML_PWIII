@@ -1,0 +1,74 @@
+﻿@{
+    ViewData["Title"] = "Perfil";
+}
+
+<section class="bg-dark-subtle border-bottom border-dark-subtle py-4">
+    <div class="container text-center">
+        <div class="perfil-card mx-auto p-4 rounded-4 bg-dark shadow-sm" style="max-width: 500px;">
+            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="avatar" class="rounded-circle perfil-avatar mb-3" width="100" />
+            <h3 class="fw-bold mb-0">Juan Pérez</h3>
+            <p class="opacity-75 mb-3">juan_musiclover</p>
+            <div>
+                <button class="btn btn-success rounded-pill px-3 me-2"><i class="bi bi-pencil"></i> Editar perfil</button>
+                <button class="btn btn-outline-light rounded-pill px-3"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="container py-4 d-flex flex-column justify-content-center flex-grow-1">
+    <div class="row g-4">
+
+        <div class="col-lg-4">
+            <div class="p-4 rounded-3 card-hover h-100">
+                <h5 class="text-success fw-semibold mb-3"><i class="bi bi-person-circle"></i> Información</h5>
+                <p class="mb-1"><strong>Email:</strong> juanperez@example.com</p>
+                <p class="mb-1"><strong>Miembro desde:</strong> Enero 2025</p>
+                <p class="mb-1"><strong>Preferencias:</strong> Rock, Indie, Electrónica</p>
+            </div>
+        </div>
+
+        <div class="col-lg-8">
+            <div class="p-4 rounded-3 card-hover h-100">
+                <h5 class="text-success fw-semibold mb-3"><i class="bi bi-music-note-list"></i> Tus playlists</h5>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <div class="playlist-card p-3 rounded-3 bg-dark-subtle text-center">
+                            <i class="bi bi-disc fs-1 text-success"></i>
+                            <h6 class="mt-2 fw-semibold">Favoritas 🎶</h6>
+                            <p class="opacity-50 small mb-0">25 canciones</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card p-3 rounded-3 bg-dark-subtle text-center">
+                            <i class="bi bi-lightning-charge fs-1 text-success"></i>
+                            <h6 class="mt-2 fw-semibold">Workout Mix ⚡</h6>
+                            <p class="opacity-50 small mb-0">18 canciones</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="playlist-card p-3 rounded-3 bg-dark-subtle text-center">
+                            <i class="bi bi-moon-stars fs-1 text-success"></i>
+                            <h6 class="mt-2 fw-semibold">Chill Nights 🌙</h6>
+                            <p class="opacity-50 small mb-0">32 canciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12">
+            <div class="p-4 rounded-3 card-hover">
+                <h5 class="text-success fw-semibold mb-3"><i class="bi bi-stars"></i> Recomendaciones para vos</h5>
+                <div class="d-flex flex-wrap gap-3">
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Interpol</span>
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Daft Punk</span>
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Tame Impala</span>
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Arctic Monkeys</span>
+                    <span class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Massive Attack</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>

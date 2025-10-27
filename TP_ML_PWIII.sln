@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36603.0 d17.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_ML_PWIII", "TP_ML_PWIII\TP_ML_PWIII.csproj", "{22E2DB34-62F8-4282-A712-7AE1C1CE1770}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_ML_PWIII.Web", "TP_ML_PWIII\TP_ML_PWIII.Web.csproj", "{22E2DB34-62F8-4282-A712-7AE1C1CE1770}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_ML_PWIII.Data", "TP_ML_PWIII.Data\TP_ML_PWIII.Data.csproj", "{62A13D0B-3D20-4D54-9799-F45DE256074A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TP_ML_PWIII.Logica", "TP_ML_PWIII.Logica\TP_ML_PWIII.Logica.csproj", "{54A5F93C-F665-417E-A6BB-4D48C911DB4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{22E2DB34-62F8-4282-A712-7AE1C1CE1770}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22E2DB34-62F8-4282-A712-7AE1C1CE1770}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22E2DB34-62F8-4282-A712-7AE1C1CE1770}.Release|Any CPU.Build.0 = Release|Any CPU
+		{62A13D0B-3D20-4D54-9799-F45DE256074A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{62A13D0B-3D20-4D54-9799-F45DE256074A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{62A13D0B-3D20-4D54-9799-F45DE256074A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{62A13D0B-3D20-4D54-9799-F45DE256074A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{54A5F93C-F665-417E-A6BB-4D48C911DB4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{54A5F93C-F665-417E-A6BB-4D48C911DB4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{54A5F93C-F665-417E-A6BB-4D48C911DB4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{54A5F93C-F665-417E-A6BB-4D48C911DB4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
