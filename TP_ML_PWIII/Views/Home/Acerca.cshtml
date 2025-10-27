@@ -1,0 +1,78 @@
+﻿@{
+    ViewData["Title"] = "Acerca";
+}
+
+<header class="bg-dark-subtle border-bottom border-dark-subtle py-4 text-center">
+    <div class="container">
+        <h2 class="fw-bold text-success mb-1"><i class="bi bi-info-circle"></i> Acerca de ML Music</h2>
+        <p class="text-light opacity-75 mb-0">Proyecto educativo de recomendación musical impulsado por Machine Learning y .NET</p>
+    </div>
+</header>
+
+<main class="container py-4 flex-grow-1">
+
+    <section class="mb-5">
+        <div class="p-4 rounded-3 card-hover">
+            <h4 class="fw-semibold text-success mb-3"><i class="bi bi-soundwave"></i> ¿Qué es ML Music?</h4>
+            <p class="opacity-75 mb-0">
+                <strong>ML Music</strong> es una aplicación demostrativa que utiliza técnicas de
+                <span class="text-success fw-semibold">Machine Learning</span> para generar
+                recomendaciones musicales personalizadas.
+                A través del análisis de tus gustos y hábitos de escucha, el sistema puede sugerir artistas, géneros y playlists adaptadas a tu perfil.
+            </p>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h4 class="fw-semibold text-success mb-3"><i class="bi bi-diagram-3"></i> Pipeline de recomendación</h4>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 card-hover h-100 text-center">
+                    <i class="bi bi-database text-success fs-1 mb-2"></i>
+                    <h6 class="fw-semibold">Preparación de datos</h6>
+                    <p class="opacity-75 small mb-0">Normalización de archivos CSV, codificación de géneros y depuración de metadatos.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 card-hover h-100 text-center">
+                    <i class="bi bi-cpu text-success fs-1 mb-2"></i>
+                    <h6 class="fw-semibold">Entrenamiento ML.NET</h6>
+                    <p class="opacity-75 small mb-0">Uso de algoritmos como <strong>K-Means</strong> y <strong>LightGBM</strong> para clasificación y clustering musical.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="p-4 rounded-3 card-hover h-100 text-center">
+                    <i class="bi bi-graph-up text-success fs-1 mb-2"></i>
+                    <h6 class="fw-semibold">Recomendación híbrida</h6>
+                    <p class="opacity-75 small mb-0">Combinación de filtrado colaborativo con similitud de contenido para sugerencias más precisas.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <h4 class="fw-semibold text-success mb-3"><i class="bi bi-gear-wide-connected"></i> Tecnologías utilizadas</h4>
+        <div class="d-flex flex-wrap gap-3 justify-content-center">
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">ML.NET</div>
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">.NET 8</div>
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">C#</div>
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">Bootstrap 5</div>
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">JavaScript</div>
+            <div class="badge bg-success bg-opacity-25 border border-success text-success px-3 py-2 rounded-pill">HTML & CSS</div>
+        </div>
+    </section>
+
+    <section class="mb-5">
+        <div class="p-4 rounded-3 card-hover">
+            <h4 class="fw-semibold text-success mb-3"><i class="bi bi-lightbulb"></i> Objetivo del proyecto</h4>
+            <p class="opacity-75 mb-0">
+                El objetivo de ML Music es demostrar cómo las técnicas de aprendizaje automático pueden integrarse en una experiencia web moderna para crear
+                <span class="text-success fw-semibold">recomendaciones personalizadas</span> y potenciar la interacción con los usuarios.
+            </p>
+        </div>
+    </section>
+
+    <section class="text-center">
+        <p class="text-light opacity-75 mb-1">Desarrollado por <span class="text-success fw-semibold">[Tu nombre / equipo]</span></p>
+    </section>
+</main>

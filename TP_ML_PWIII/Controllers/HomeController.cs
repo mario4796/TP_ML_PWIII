@@ -18,6 +18,23 @@ namespace TP_ML_PWIII.Controllers
             return View();
         }
 
+
+        public IActionResult Acerca()
+        {
+            return View();
+        }
+
+
+        public IActionResult Explorar()
+        {
+            return View();
+        }
+
+        public IActionResult Perfil()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
