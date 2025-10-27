@@ -2,6 +2,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddScoped<TP_ML_PWIII.Logica.IUsuariosLogica, TP_ML_PWIII.Logica.UsuariosLogica>();
+builder.Services.AddDbContext<TP_ML_PWIII.Data.Entidades.MiDbContext>();
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromMinutes(30);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
 
 var app = builder.Build();
 

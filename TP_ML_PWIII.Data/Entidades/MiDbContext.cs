@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 
-namespace TP_ML_PWIII.Web.Models;
-
+namespace TP_ML_PWIII.Data.Entidades;
 public partial class MiDbContext : DbContext
 {
     public MiDbContext()
@@ -24,7 +23,7 @@ public partial class MiDbContext : DbContext
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        => optionsBuilder.UseSqlServer("Server=DESKTOP-241GHB2\\SQLEXPRESS;Database=PWIII_TP;Trusted_Connection=True;TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-L9F45G1\\SQLEXPRESS;Database=PWIII_TP;Trusted_Connection=True;TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
