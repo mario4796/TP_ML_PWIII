@@ -16,7 +16,7 @@ namespace TP_ML_PWIII.Logica
         void modificarUsuario(Usuario usuario);
         bool validarCredenciales(string email, string password);
         Usuario? Login(string email, string password);
-        bool Registrar(string email, string password);
+        bool Registrar(string email, string username, string password);
         bool existeEmail(string email);
         
         bool passwordIguales(string password1, string password2);
@@ -67,7 +67,7 @@ namespace TP_ML_PWIII.Logica
             return _context.Usuarios.FirstOrDefault(u => u.Email == email && u.TokenAcceso == password);
         }
 
-        public bool Registrar(string email, string password)
+        public bool Registrar(string email, string username, string password)
         {
             if (existeEmail(email))
             {
@@ -76,6 +76,7 @@ namespace TP_ML_PWIII.Logica
             var nuevoUsuario = new Usuario
             {
                 Email = email,
+                NombreUsuario = username,
                 TokenAcceso = password,
                 FechaRegistro = DateTime.Now
             };

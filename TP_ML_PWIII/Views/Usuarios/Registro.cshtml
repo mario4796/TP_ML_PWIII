@@ -31,6 +31,19 @@
                     }
                     <form asp-controller="Usuarios" asp-action="Registro" method="post" class="needs-validation" novalidate>
                         <div class="mb-3">
+                            <label for="username" class="form-label text-light fw-semibold">
+                                <i class="bi bi-envelope me-1"></i>Username
+                            </label>
+                            <input type="text"
+                                   class="form-control form-control-lg auth-input"
+                                   id="username"
+                                   name="username"
+                                   placeholder="nombre123"
+                                   required/>
+                        </div>
+
+
+                        <div class="mb-3">
                             <label for="email" class="form-label text-light fw-semibold">
                                 <i class="bi bi-envelope me-1"></i>Email
                             </label>
@@ -42,6 +55,7 @@
                                    required
                                    autocomplete="email" />
                         </div>
+
 
                         <div class="mb-3">
                             <label for="password" class="form-label text-light fw-semibold">
@@ -57,6 +71,8 @@
                                    minlength="6" />
                             <small class="text-light opacity-50">Mínimo 6 caracteres</small>
                         </div>
+
+
 
                         <div class="mb-4">
                             <label for="confirmarPassword" class="form-label text-light fw-semibold">

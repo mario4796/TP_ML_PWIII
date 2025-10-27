@@ -16,6 +16,11 @@ namespace TP_ML_PWIII.Web.Controllers
         [HttpGet]
         public IActionResult Login()
         {
+
+            if(HttpContext.Session.GetInt32("IdUsuario") != null)
+            {
+                return RedirectToAction("Explorar", "Home");
+            }
             return View();
         }
 
@@ -33,7 +38,8 @@ namespace TP_ML_PWIII.Web.Controllers
                 var usuario = _usuariosLogica.ObtenerUsuarioPorEmail(email);
                 HttpContext.Session.SetInt32("IdUsuario", usuario.IdUsuario);
                 HttpContext.Session.SetString("Email", usuario.Email);
-                return RedirectToAction("Index", "Home");
+                HttpContext.Session.SetString("Username", usuario.NombreUsuario);
+                return RedirectToAction("Explorar", "Home");
             }
             else
             {
@@ -43,14 +49,14 @@ namespace TP_ML_PWIII.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Registro(string email, string password, string confirmarPassword)
+        public IActionResult Registro(string email, string username, string password, string confirmarPassword)
         {
             if (!_usuariosLogica.passwordIguales(password, confirmarPassword))
             {
                 ViewBag.Error = "Las contraseñas no coinciden";
                 return View();
             }
-            bool exito = _usuariosLogica.Registrar(email, password);
+            bool exito = _usuariosLogica.Registrar(email, username, password);
 
             if (!exito)
             {
