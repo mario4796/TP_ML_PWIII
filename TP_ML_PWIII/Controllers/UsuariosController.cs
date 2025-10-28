@@ -78,8 +78,6 @@ namespace TP_ML_PWIII.Web.Controllers
                 return View(model);
             }
 
-            return RedirectToAction("Login");
-
         }
 
 
