@@ -1,0 +1,40 @@
+﻿@model TP_ML_PWIII.Web.Models.ViewModels.EditarPerfilViewModel
+
+@{
+ ViewData["Title"] = "Editar perfil";
+}
+
+<div class="container mt-5">
+ <div class="row justify-content-center">
+ <div class="col-md-6">
+ <div class="card p-4">
+ <h3 class="mb-3">Editar perfil</h3>
+ <form asp-controller="Usuarios" asp-action="EditarPerfil" method="post" class="needs-validation" novalidate>
+ <input asp-for="IdUsuario" type="hidden" />
+
+ <div class="mb-3">
+ <label asp-for="NombreUsuario" class="form-label">Nombre de usuario</label>
+ <input asp-for="NombreUsuario" class="form-control" />
+ <span asp-validation-for="NombreUsuario" class="text-danger small"></span>
+ </div>
+
+
+ <div class="mb-3">
+ <label asp-for="Password" class="form-label">Nueva contraseña</label>
+ <input asp-for="Password" type="password" class="form-control" autocomplete="new-password" />
+ <span asp-validation-for="Password" class="text-danger small"></span>
+ </div>
+
+ <div class="mb-3">
+ <label asp-for="ConfirmarPassword" class="form-label">Confirmar contraseña</label>
+ <input asp-for="ConfirmarPassword" type="password" class="form-control" autocomplete="new-password" />
+ <span asp-validation-for="ConfirmarPassword" class="text-danger small"></span>
+ </div>
+
+ <button type="submit" class="btn btn-success">Guardar cambios</button>
+ </form>
+ </div>
+ </div>
+ </div>
+</div>
+

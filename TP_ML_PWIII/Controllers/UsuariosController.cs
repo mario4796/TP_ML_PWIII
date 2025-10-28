@@ -9,9 +9,12 @@ namespace TP_ML_PWIII.Web.Controllers
     public class UsuariosController : Controller
     {
       private readonly IUsuariosLogica _usuariosLogica;
-        public UsuariosController(IUsuariosLogica usuariosLogica)
+      private readonly IPasswordService _passwordService;
+
+        public UsuariosController(IUsuariosLogica usuariosLogica, IPasswordService passwordService)
         {
             _usuariosLogica = usuariosLogica;
+            _passwordService = passwordService;
         }
 
         [HttpGet]
@@ -86,6 +89,52 @@ namespace TP_ML_PWIII.Web.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Login");
         }
+
+        [HttpGet]
+        public IActionResult EditarPerfil()
+        {
+            var id = HttpContext.Session.GetInt32("IdUsuario");
+            if(id == null) return RedirectToAction("Login");
+
+            var usuario = _usuariosLogica.ObtenerUsuarioPorId(id.Value);
+            if(usuario == null) return RedirectToAction("Login");
+
+            var model = new EditarPerfilViewModel
+            {
+                IdUsuario = usuario.IdUsuario,
+                NombreUsuario = usuario.NombreUsuario ?? string.Empty,
+            };
+
+            return View(model);
+        }
+
+        [HttpPost]
+        public IActionResult EditarPerfil(EditarPerfilViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var usuario = _usuariosLogica.ObtenerUsuarioPorId(model.IdUsuario);
+            if (usuario == null) return RedirectToAction("Login");
+
+            usuario.NombreUsuario = model.NombreUsuario;
+
+            if (!string.IsNullOrWhiteSpace(model.Password))
+            {
+                usuario.TokenAcceso = _passwordService.HashPassword(model.Password);
+            }
+
+            _usuariosLogica.modificarUsuario(usuario);
+
+            HttpContext.Session.SetString("NombreUsuario", usuario.NombreUsuario ?? "Usuario");
+
+            TempData["MensajeExito"] = "Perfil actualizado correctamente.";
+
+            return RedirectToAction("Perfil", "Home");
+        }
+
     }
 
 }

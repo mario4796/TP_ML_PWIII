@@ -56,7 +56,7 @@ namespace TP_ML_PWIII.Controllers
         
             };
 
-
+            ViewBag.Mensaje = TempData["MensajeExito"];
 
             return View(viewModel);
         }
