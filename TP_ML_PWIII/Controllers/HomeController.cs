@@ -1,16 +1,19 @@
-using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
+using System.Diagnostics;
+using TP_ML_PWIII.Logica;
 using TP_ML_PWIII.Models;
+using TP_ML_PWIII.Web.Models.ViewModels;
 
 namespace TP_ML_PWIII.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger)
+        private readonly IUsuariosLogica _usuariosLogica;
+
+        public HomeController(IUsuariosLogica usuariosLogica)
         {
-            _logger = logger;
+            _usuariosLogica = usuariosLogica;
         }
 
         public IActionResult Index()
@@ -18,12 +21,10 @@ namespace TP_ML_PWIII.Controllers
             return View();
         }
 
-
         public IActionResult Acerca()
         {
             return View();
         }
-
 
         public IActionResult Explorar()
         {
@@ -32,18 +33,32 @@ namespace TP_ML_PWIII.Controllers
 
         public IActionResult Perfil()
         {
-            return View();
-        }
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
+            var idUsuario = HttpContext.Session.GetInt32("IdUsuario");
+            if (idUsuario == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
 
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var usuario = _usuariosLogica.ObtenerUsuarioPorId(idUsuario.Value);
+
+            if (usuario == null)
+            {
+                return RedirectToAction("Login", "Usuarios");
+            }
+
+            var viewModel = new PerfilViewModel
+            {
+                IdUsuario = usuario.IdUsuario,
+                NombreUsuario = usuario.NombreUsuario ?? "Usuario",
+                Email = usuario.Email ?? "",
+                FechaRegistro = usuario.FechaRegistro ?? DateTime.Now,
+        
+            };
+
+
+
+            return View(viewModel);
         }
     }
 }

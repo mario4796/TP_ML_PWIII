@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using Microsoft.EntityFrameworkCore;
 
-namespace TP_ML_PWIII.Web.Models;
+namespace TP_ML_PWIII.Data.Entidades;
 
 public partial class Interaccione
 {

@@ -1,9 +1,12 @@
 ﻿@{
     var title = ViewData["Title"] ?? "ML Music";
+    var username = Context.Session.GetString("Username");
+    var estaLogueado = Context.Session.GetInt32("IdUsuario").HasValue;
+
 }
 
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" data-bs-theme="dark">
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -29,30 +32,78 @@
 
                 <div class="collapse navbar-collapse" id="mainNav">
                     <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewData["Title"]?.ToString() == "Inicio" ? "active text-success" : "text-light")"
-                               asp-controller="Home" asp-action="Index">
-                                <i class="bi bi-house-door"></i> Inicio
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewData["Title"]?.ToString() == "Explorar" ? "active text-success" : "text-light")"
-                               asp-controller="Home" asp-action="Explorar">
-                                <i class="bi bi-compass"></i> Explorar
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewData["Title"]?.ToString() == "Perfil" ? "active text-success" : "text-light")"
-                               asp-controller="Home" asp-action="Perfil">
-                                <i class="bi bi-person"></i> Perfil
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link @(ViewData["Title"]?.ToString() == "Acerca" ? "active text-success" : "text-light")"
-                               asp-controller="Home" asp-action="Acerca">
-                                <i class="bi bi-info-circle"></i> Acerca
-                            </a>
-                        </li>
+                        @if (estaLogueado)
+                        {
+              
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Inicio" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Index">
+                                    <i class="bi bi-house-door"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Explorar" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Explorar">
+                                    <i class="bi bi-compass"></i> Explorar
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Perfil" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Perfil">
+                                    <i class="bi bi-person"></i> Perfil
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Acerca" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Acerca">
+                                    <i class="bi bi-info-circle"></i> Acerca
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle text-success" href="#" id="userDropdown"
+                                   role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="bi bi-person-circle"></i> @username
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="userDropdown">
+                                    <li>
+                                        <a class="dropdown-item text-light" asp-controller="Home" asp-action="Perfil">
+                                            <i class="bi bi-person"></i> Mi Perfil
+                                        </a>
+                                    </li>
+                                    <li><hr class="dropdown-divider border-secondary"></li>
+                                    <li>
+                                        <a class="dropdown-item text-danger" asp-controller="Usuarios" asp-action="Logout">
+                                            <i class="bi bi-box-arrow-right"></i> Cerrar Sesión
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                        }
+                        else
+                        {
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Inicio" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Index">
+                                    <i class="bi bi-house-door"></i> Inicio
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link @(ViewData["Title"]?.ToString() == "Acerca" ? "active text-success" : "text-light")"
+                                   asp-controller="Home" asp-action="Acerca">
+                                    <i class="bi bi-info-circle"></i> Acerca
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Usuarios" asp-action="Registro">
+                                    <i class="bi bi-person-plus"></i> Registrarse
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-success" asp-controller="Usuarios" asp-action="Login">
+                                    <i class="bi bi-box-arrow-in-right"></i> Iniciar Sesión
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>

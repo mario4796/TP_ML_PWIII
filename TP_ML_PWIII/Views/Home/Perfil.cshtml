@@ -1,16 +1,23 @@
-﻿@{
+﻿@model TP_ML_PWIII.Web.Models.ViewModels.PerfilViewModel
+
+@{
     ViewData["Title"] = "Perfil";
 }
 
 <section class="bg-dark-subtle border-bottom border-dark-subtle py-4">
     <div class="container text-center">
         <div class="perfil-card mx-auto p-4 rounded-4 bg-dark shadow-sm" style="max-width: 500px;">
-            <img src="https://cdn-icons-png.flaticon.com/512/1077/1077012.png" alt="avatar" class="rounded-circle perfil-avatar mb-3" width="100" />
-            <h3 class="fw-bold mb-0">Juan Pérez</h3>
-            <p class="opacity-75 mb-3">juan_musiclover</p>
+            <img src="" alt="avatar" class="rounded-circle perfil-avatar mb-3" width="100" />
+            <h3 class="fw-bold mb-0">@Model.NombreUsuario</h3>
+            <p class="opacity-75 mb-3">@Model.Email</p>
             <div>
-                <button class="btn btn-success rounded-pill px-3 me-2"><i class="bi bi-pencil"></i> Editar perfil</button>
-                <button class="btn btn-outline-light rounded-pill px-3"><i class="bi bi-box-arrow-right"></i> Cerrar sesión</button>
+                <button class="btn btn-success rounded-pill px-3 me-2">
+                    <i class="bi bi-pencil"></i> Editar perfil
+                </button>
+                <a asp-controller="Usuarios" asp-action="Logout"
+                   class="btn btn-outline-light rounded-pill px-3">
+                    <i class="bi bi-box-arrow-right"></i> Cerrar sesión
+                </a>
             </div>
         </div>
     </div>
@@ -22,8 +29,8 @@
         <div class="col-lg-4">
             <div class="p-4 rounded-3 card-hover h-100">
                 <h5 class="text-success fw-semibold mb-3"><i class="bi bi-person-circle"></i> Información</h5>
-                <p class="mb-1"><strong>Email:</strong> juanperez@example.com</p>
-                <p class="mb-1"><strong>Miembro desde:</strong> Enero 2025</p>
+                <p class="mb-1"><strong>Email:</strong> @Model.Email</p>
+                <p class="mb-1"><strong>Miembro desde:</strong>@Model.FechaRegistro</p>
                 <p class="mb-1"><strong>Preferencias:</strong> Rock, Indie, Electrónica</p>
             </div>
         </div>
