@@ -7,7 +7,6 @@ using Microsoft.EntityFrameworkCore;
 namespace TP_ML_PWIII.Data.Entidades;
 
 [Table("Usuario")]
-[Index("SpotifyId", Name = "UQ__Usuario__958BCEFD53AEA439", IsUnique = true)]
 [Index("Email", Name = "UQ__Usuario__A9D105341CC6F1E2", IsUnique = true)]
 public partial class Usuario
 {

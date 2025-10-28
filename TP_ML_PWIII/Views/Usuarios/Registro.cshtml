@@ -1,4 +1,6 @@
-﻿@*
+﻿@model TP_ML_PWIII.Web.Models.ViewModels.RegistroViewModel
+
+@*
     For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 *@
 @{
@@ -31,61 +33,65 @@
                     }
                     <form asp-controller="Usuarios" asp-action="Registro" method="post" class="needs-validation" novalidate>
                         <div class="mb-3">
-                            <label for="username" class="form-label text-light fw-semibold">
+                            <label asp-for="NombreUsuario" class="form-label text-light fw-semibold">
                                 <i class="bi bi-envelope me-1"></i>Username
                             </label>
-                            <input type="text"
+                            <input asp-for="NombreUsuario" type="text"
                                    class="form-control form-control-lg auth-input"
-                                   id="username"
-                                   name="username"
+                    
                                    placeholder="nombre123"
                                    required/>
+
+                            <span asp-validation-for="NombreUsuario" class="text-danger small"></span>
                         </div>
 
 
                         <div class="mb-3">
-                            <label for="email" class="form-label text-light fw-semibold">
+                            <label asp-for="Email" class="form-label text-light fw-semibold">
                                 <i class="bi bi-envelope me-1"></i>Email
                             </label>
-                            <input type="email"
+                            <input asp-for="Email"
+                                type="email"
                                    class="form-control form-control-lg auth-input"
-                                   id="email"
-                                   name="email"
+                               
                                    placeholder="tu@email.com"
                                    required
                                    autocomplete="email" />
+                            <span asp-validation-for="Email" class="text-danger small"></span>
                         </div>
 
 
                         <div class="mb-3">
-                            <label for="password" class="form-label text-light fw-semibold">
+                            <label asp-for="Password" class="form-label text-light fw-semibold">
                                 <i class="bi bi-lock me-1"></i>Contraseña
                             </label>
-                            <input type="password"
+                            <input asp-for="Password" type="password"
                                    class="form-control form-control-lg auth-input"
-                                   id="password"
-                                   name="password"
+                                
                                    placeholder="••••••••"
                                    required
                                    autocomplete="new-password"
                                    minlength="6" />
                             <small class="text-light opacity-50">Mínimo 6 caracteres</small>
+                            <span asp-validation-for="Password" class="text-danger small"></span>
                         </div>
 
 
 
                         <div class="mb-4">
-                            <label for="confirmarPassword" class="form-label text-light fw-semibold">
+                            <label asp-for="ConfirmarPassword" for="confirmarPassword" class="form-label text-light fw-semibold">
                                 <i class="bi bi-shield-lock me-1"></i>Confirmar Contraseña
                             </label>
-                            <input type="password"
+                            <input asp-for="ConfirmarPassword"
+                  
+                                type="password"
                                    class="form-control form-control-lg auth-input"
-                                   id="confirmarPassword"
-                                   name="confirmarPassword"
+                                
                                    placeholder="••••••••"
                                    required
                                    autocomplete="new-password"
                                    minlength="6" />
+                            <span asp-validation-for="ConfirmarPassword" class="text-danger small"></span>
                         </div>
 
                         <button type="submit" class="btn btn-success btn-lg w-100 rounded-pill fw-semibold mb-3 auth-btn">

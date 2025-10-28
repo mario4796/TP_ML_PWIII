@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using TP_ML_PWIII.Logica;
 using TP_ML_PWIII.Data.Entidades;
+using TP_ML_PWIII.Web.Models.ViewModels;
 
 namespace TP_ML_PWIII.Web.Controllers
 {
@@ -31,39 +32,54 @@ namespace TP_ML_PWIII.Web.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(string email, string password)
+        public IActionResult Login(LoginViewModel model)
         {
-            if (_usuariosLogica.validarCredenciales(email, password))
+            if(!ModelState.IsValid)
             {
-                var usuario = _usuariosLogica.ObtenerUsuarioPorEmail(email);
+                return View(model);
+            }
+            var usuario = _usuariosLogica.Login(model.Email, model.Password);
+            if(usuario != null)
+            {
                 HttpContext.Session.SetInt32("IdUsuario", usuario.IdUsuario);
-                HttpContext.Session.SetString("Email", usuario.Email);
-                HttpContext.Session.SetString("Username", usuario.NombreUsuario);
+                HttpContext.Session.SetString("NombreUsuario", usuario.NombreUsuario ?? "Usuario");
                 return RedirectToAction("Explorar", "Home");
             }
             else
             {
-                ViewBag.Error = "Credenciales inválidas.";
-                return View();
-            }
+                ModelState.AddModelError("", "Credenciales inválidas.");
+                return View(model);
+            }   
+
         }
 
         [HttpPost]
-        public IActionResult Registro(string email, string username, string password, string confirmarPassword)
+        public IActionResult Registro(RegistroViewModel model)
         {
-            if (!_usuariosLogica.passwordIguales(password, confirmarPassword))
+            if(!ModelState.IsValid)
             {
-                ViewBag.Error = "Las contraseñas no coinciden";
-                return View();
+                return View(model);
             }
-            bool exito = _usuariosLogica.Registrar(email, username, password);
 
-            if (!exito)
+            if(_usuariosLogica.ObtenerUsuarioPorEmail(model.Email) != null)
             {
-                ViewBag.Error = "El email ya está registrado";
-                return View();
+                ModelState.AddModelError("Email", "El email ya está registrado.");
+                return View(model);
             }
+
+            bool registrado = _usuariosLogica.Registrar(model.Email, model.NombreUsuario, model.Password);
+            if(registrado)
+            {
+                return RedirectToAction("Login");
+            }
+            else
+            {
+                ModelState.AddModelError("", "Error al registrar el usuario.");
+                return View(model);
+            }
+
             return RedirectToAction("Login");
+
         }
 
 
