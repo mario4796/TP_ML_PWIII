@@ -1,6 +1,6 @@
 ﻿@{
     var title = ViewData["Title"] ?? "ML Music";
-    var username = Context.Session.GetString("Username");
+    var username = Context.Session.GetString("NombreUsuario");
     var estaLogueado = Context.Session.GetInt32("IdUsuario").HasValue;
 
 }
@@ -60,9 +60,12 @@
                                 </a>
                             </li>
                             <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle text-success" href="#" id="userDropdown"
+                                <a class="nav-link dropdown-toggle text-success d-flex align-items-center" href="#" id="userDropdown"
                                    role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    <i class="bi bi-person-circle"></i> @username
+                                    <img src="https://ui-avatars.com/api/?name=@Uri.EscapeDataString(username ?? "User")&background=0D8ABC&color=fff"
+                                         alt="avatar" class="rounded-circle me-2" width="25" height="25" />
+
+                                    <span>@username</span>
                                 </a>
                                 <ul class="dropdown-menu dropdown-menu-end bg-dark" aria-labelledby="userDropdown">
                                     <li>
@@ -78,6 +81,7 @@
                                     </li>
                                 </ul>
                             </li>
+
                         }
                         else
                         {
